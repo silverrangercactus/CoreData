@@ -14,14 +14,8 @@ class ViewController: UIViewController {
 
     let fileManager = FileManager.default
     
-    var dataAlbum: [Data] = []
-    
-    var imageAlbum: [UIImage] = []
-    
-    var name = "Photo_"
-    
-    var number = 01
-    
+    var parthToItems : [URL] = []
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Documents"
@@ -30,6 +24,8 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto))
 
         setupTableView()
+        print("Путь - \(FileManager.getDocumentDirectory())")
+        addToFolder()
     }
 
     @objc func addPhoto() {
@@ -53,86 +49,73 @@ class ViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+    
+    
+    func addToFolder() {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        if let url = documentsUrl {
+            do {
+                let directoryContents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+                self.parthToItems = directoryContents
+            } catch {
+            }
+        }
+    }
 }
+    
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let documentURL = try! fileManager.url(
-            for: .documentDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false)
-
-
-        let content = try! fileManager.contentsOfDirectory(at: documentURL,
-                                                           includingPropertiesForKeys: nil,
-                                                           options: [])
-
-        return content.count
-        
+        return self.parthToItems.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: cellID)
-        let documentURL = try! fileManager.url(
-            for: .documentDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false)
-
-
-        let content = try! fileManager.contentsOfDirectory(at: documentURL,
-                                                           includingPropertiesForKeys: nil,
-                                                           options: [])
-        cell.textLabel?.text = String(describing: content[indexPath.row].lastPathComponent)
+  
+        cell.textLabel?.text = String(describing: self.parthToItems[indexPath.row].lastPathComponent)
         cell.imageView?.image = UIImage(systemName: "photo")
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            print("Deleting...")
+            
+            self.parthToItems.remove(at: indexPath.row)
+            let url = parthToItems[indexPath.row]
+            try? FileManager.default.removeItem(at: url)
+            
+            tableView.reloadData()
+        default:
+            print("ololo")
+        }
+        tableView.reloadData()
+    }
 }
-
-
 
 
 
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            if let imageData = image.pngData() {
-              
-            
-            let documentURL = try! fileManager.url(
-                for: .documentDirectory,
-                in: .userDomainMask,
-                appropriateFor: nil,
-                create: false)
-            
-                let pathToCreateDocument = documentURL.appendingPathComponent(name + String(describing: number))
-            
-                let fileExists = FileManager.default.fileExists(atPath: pathToCreateDocument.path)
-            
-            if fileExists == true {
-                number+=1
-                
-                let pathToCreateDocumentIndex = documentURL.appendingPathComponent(name + String(describing: number))
-                
-                fileManager.createFile(atPath: pathToCreateDocumentIndex.path,
-                                            contents: imageData,
-                                            attributes: nil)
-            } else {
-                fileManager.createFile(atPath: pathToCreateDocument.path,
-                                            contents: imageData,
-                                            attributes: nil)
-            }
-                print(documentURL)
+        
+        guard let image = info[.editedImage] as? UIImage else { return }
 
-            }
+        let imageName = UUID().uuidString
+        let imagePath = FileManager.getDocumentDirectory().appendingPathComponent(imageName)
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            try? imageData.write(to: imagePath)
+            print(imageName)
         }
-        picker.dismiss(animated: true, completion: nil)
-        tableView.reloadData()
 
+        dismiss(animated: true)
+        addToFolder()
+        tableView.reloadData()
     }
+
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
