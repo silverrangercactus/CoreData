@@ -9,21 +9,36 @@
 /* Begin PBXBuildFile section */
 		208758C6278D9AD1004B41D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C5278D9AD1004B41D6 /* AppDelegate.swift */; };
 		208758C8278D9AD1004B41D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C7278D9AD1004B41D6 /* SceneDelegate.swift */; };
-		208758CA278D9AD1004B41D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C9278D9AD1004B41D6 /* ViewController.swift */; };
+		208758CA278D9AD1004B41D6 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C9278D9AD1004B41D6 /* DocumentsViewController.swift */; };
 		208758CF278D9AD3004B41D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208758CE278D9AD3004B41D6 /* Assets.xcassets */; };
 		208758DC278DC192004B41D6 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758DB278DC192004B41D6 /* NavigationController.swift */; };
 		20875900278FEF0C004B41D6 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758FF278FEF0C004B41D6 /* FileManager+Extension.swift */; };
+		20C1F871279FBB820083A2C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F870279FBB820083A2C0 /* HomeViewController.swift */; };
+		20C1F874279FCD040083A2C0 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 20C1F873279FCD040083A2C0 /* KeychainAccess */; };
+		20C1F878279FD07B0083A2C0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F877279FD07B0083A2C0 /* SettingViewController.swift */; };
+		20C1F87A279FD0DF0083A2C0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F879279FD0DF0083A2C0 /* Coordinator.swift */; };
+		20C1F87C279FD1380083A2C0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F87B279FD1380083A2C0 /* AppCoordinator.swift */; };
+		20C1F87E279FD1800083A2C0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F87D279FD1800083A2C0 /* TabBarController.swift */; };
+		20C1F880279FD2170083A2C0 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F87F279FD2170083A2C0 /* ControllerFactory.swift */; };
+		20C1F882279FD3660083A2C0 /* DocumentsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C1F881279FD3660083A2C0 /* DocumentsFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		208758C2278D9AD1004B41D6 /* CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208758C5278D9AD1004B41D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208758C7278D9AD1004B41D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		208758C9278D9AD1004B41D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		208758C9278D9AD1004B41D6 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		208758CE278D9AD3004B41D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		208758D3278D9AD3004B41D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		208758DB278DC192004B41D6 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		208758FF278FEF0C004B41D6 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		20C1F870279FBB820083A2C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		20C1F877279FD07B0083A2C0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		20C1F879279FD0DF0083A2C0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		20C1F87B279FD1380083A2C0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		20C1F87D279FD1800083A2C0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		20C1F87F279FD2170083A2C0 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
+		20C1F881279FD3660083A2C0 /* DocumentsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C1F874279FCD040083A2C0 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +72,38 @@
 		208758C4278D9AD1004B41D6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				20C1F875279FCFA10083A2C0 /* Coordinators */,
+				20C1F876279FCFB70083A2C0 /* Factory */,
 				208758C5278D9AD1004B41D6 /* AppDelegate.swift */,
-				208758FF278FEF0C004B41D6 /* FileManager+Extension.swift */,
 				208758C7278D9AD1004B41D6 /* SceneDelegate.swift */,
-				208758C9278D9AD1004B41D6 /* ViewController.swift */,
+				208758FF278FEF0C004B41D6 /* FileManager+Extension.swift */,
+				208758C9278D9AD1004B41D6 /* DocumentsViewController.swift */,
+				20C1F870279FBB820083A2C0 /* HomeViewController.swift */,
+				20C1F877279FD07B0083A2C0 /* SettingViewController.swift */,
 				208758DB278DC192004B41D6 /* NavigationController.swift */,
+				20C1F87D279FD1800083A2C0 /* TabBarController.swift */,
 				208758CE278D9AD3004B41D6 /* Assets.xcassets */,
 				208758D3278D9AD3004B41D6 /* Info.plist */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		20C1F875279FCFA10083A2C0 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				20C1F879279FD0DF0083A2C0 /* Coordinator.swift */,
+				20C1F87B279FD1380083A2C0 /* AppCoordinator.swift */,
+				20C1F881279FD3660083A2C0 /* DocumentsFlowCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		20C1F876279FCFB70083A2C0 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				20C1F87F279FD2170083A2C0 /* ControllerFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +122,9 @@
 			dependencies = (
 			);
 			name = CoreData;
+			packageProductDependencies = (
+				20C1F873279FCD040083A2C0 /* KeychainAccess */,
+			);
 			productName = CoreData;
 			productReference = 208758C2278D9AD1004B41D6 /* CoreData.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 208758B9278D9AD1004B41D6;
+			packageReferences = (
+				20C1F872279FCD040083A2C0 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 208758C3278D9AD1004B41D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -136,11 +181,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				208758CA278D9AD1004B41D6 /* ViewController.swift in Sources */,
+				20C1F87A279FD0DF0083A2C0 /* Coordinator.swift in Sources */,
+				20C1F880279FD2170083A2C0 /* ControllerFactory.swift in Sources */,
+				208758CA278D9AD1004B41D6 /* DocumentsViewController.swift in Sources */,
+				20C1F882279FD3660083A2C0 /* DocumentsFlowCoordinator.swift in Sources */,
 				20875900278FEF0C004B41D6 /* FileManager+Extension.swift in Sources */,
+				20C1F87E279FD1800083A2C0 /* TabBarController.swift in Sources */,
 				208758DC278DC192004B41D6 /* NavigationController.swift in Sources */,
 				208758C6278D9AD1004B41D6 /* AppDelegate.swift in Sources */,
 				208758C8278D9AD1004B41D6 /* SceneDelegate.swift in Sources */,
+				20C1F87C279FD1380083A2C0 /* AppCoordinator.swift in Sources */,
+				20C1F878279FD07B0083A2C0 /* SettingViewController.swift in Sources */,
+				20C1F871279FBB820083A2C0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +391,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20C1F872279FCD040083A2C0 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20C1F873279FCD040083A2C0 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20C1F872279FCD040083A2C0 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 208758BA278D9AD1004B41D6 /* Project object */;
 }
