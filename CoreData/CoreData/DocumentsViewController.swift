@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class DocumentsViewController: UIViewController {
     
     var tableView = UITableView(frame: .zero, style: .plain)
@@ -18,6 +16,7 @@ class DocumentsViewController: UIViewController {
     
     var parthToItems : [URL] = []
 
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Documents"
