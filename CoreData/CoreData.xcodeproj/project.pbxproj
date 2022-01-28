@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205294EF27A3BBC0006A5D98 /* SecondNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205294EE27A3BBC0006A5D98 /* SecondNavigationController.swift */; };
+		205294F127A3C4D3006A5D98 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205294F027A3C4D3006A5D98 /* UserSettings.swift */; };
 		208758C6278D9AD1004B41D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C5278D9AD1004B41D6 /* AppDelegate.swift */; };
 		208758C8278D9AD1004B41D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C7278D9AD1004B41D6 /* SceneDelegate.swift */; };
 		208758CA278D9AD1004B41D6 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208758C9278D9AD1004B41D6 /* DocumentsViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		205294EE27A3BBC0006A5D98 /* SecondNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNavigationController.swift; sourceTree = "<group>"; };
+		205294F027A3C4D3006A5D98 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		208758C2278D9AD1004B41D6 /* CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208758C5278D9AD1004B41D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208758C7278D9AD1004B41D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2015CF5727A3005700F37E71 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				208758C9278D9AD1004B41D6 /* DocumentsViewController.swift */,
+				20C1F870279FBB820083A2C0 /* HomeViewController.swift */,
+				20C1F877279FD07B0083A2C0 /* SettingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		205294F227A3D832006A5D98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				205294F027A3C4D3006A5D98 /* UserSettings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		208758B9278D9AD1004B41D6 = {
 			isa = PBXGroup;
 			children = (
@@ -74,14 +96,11 @@
 			children = (
 				20C1F875279FCFA10083A2C0 /* Coordinators */,
 				20C1F876279FCFB70083A2C0 /* Factory */,
+				2015CF5727A3005700F37E71 /* ViewControllers */,
+				205294F227A3D832006A5D98 /* Model */,
 				208758C5278D9AD1004B41D6 /* AppDelegate.swift */,
 				208758C7278D9AD1004B41D6 /* SceneDelegate.swift */,
 				208758FF278FEF0C004B41D6 /* FileManager+Extension.swift */,
-				208758C9278D9AD1004B41D6 /* DocumentsViewController.swift */,
-				20C1F870279FBB820083A2C0 /* HomeViewController.swift */,
-				20C1F877279FD07B0083A2C0 /* SettingViewController.swift */,
-				208758DB278DC192004B41D6 /* NavigationController.swift */,
-				20C1F87D279FD1800083A2C0 /* TabBarController.swift */,
 				208758CE278D9AD3004B41D6 /* Assets.xcassets */,
 				208758D3278D9AD3004B41D6 /* Info.plist */,
 			);
@@ -94,6 +113,9 @@
 				20C1F879279FD0DF0083A2C0 /* Coordinator.swift */,
 				20C1F87B279FD1380083A2C0 /* AppCoordinator.swift */,
 				20C1F881279FD3660083A2C0 /* DocumentsFlowCoordinator.swift */,
+				208758DB278DC192004B41D6 /* NavigationController.swift */,
+				205294EE27A3BBC0006A5D98 /* SecondNavigationController.swift */,
+				20C1F87D279FD1800083A2C0 /* TabBarController.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -188,9 +210,11 @@
 				20875900278FEF0C004B41D6 /* FileManager+Extension.swift in Sources */,
 				20C1F87E279FD1800083A2C0 /* TabBarController.swift in Sources */,
 				208758DC278DC192004B41D6 /* NavigationController.swift in Sources */,
+				205294EF27A3BBC0006A5D98 /* SecondNavigationController.swift in Sources */,
 				208758C6278D9AD1004B41D6 /* AppDelegate.swift in Sources */,
 				208758C8278D9AD1004B41D6 /* SceneDelegate.swift in Sources */,
 				20C1F87C279FD1380083A2C0 /* AppCoordinator.swift in Sources */,
+				205294F127A3C4D3006A5D98 /* UserSettings.swift in Sources */,
 				20C1F878279FD07B0083A2C0 /* SettingViewController.swift in Sources */,
 				20C1F871279FBB820083A2C0 /* HomeViewController.swift in Sources */,
 			);

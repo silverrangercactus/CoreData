@@ -10,7 +10,7 @@ import KeychainAccess
 
 class HomeViewController: UIViewController {
     
-    //var myPassword: String
+    let appCoordinator = AppCoordinaor()
     
     let minPasswordCount = 4
     
@@ -65,27 +65,41 @@ class HomeViewController: UIViewController {
     @objc func buttonTapped() {
         if passwordTextField.text == "" {
             print("поле пустое")
+            
         } else if passwordTextField.text?.count ?? 0 < minPasswordCount && keychain["user"] == nil {
             print("минимум 4 цифры")
-        } else if let passwordStep1 = passwordTextField.text, keychain["user"] == nil, keychain["userCheck"] == nil {
+            
+        } else if let passwordStep1 = passwordTextField.text,
+                                      keychain["user"] == nil,
+                                    keychain["userCheck"] == nil {
                 homeButton.setTitle("Повторите пароль", for: .normal)
                 passwordTextField.text = ""
-            keychain["userCheck"] = passwordStep1
-            print(keychain["userCheck"])
-        } else if let passwordStep2 = passwordTextField.text, keychain["userCheck"] != nil, keychain["user"] == nil  {
+                keychain["userCheck"] = passwordStep1
+            
+        } else if let passwordStep2 = passwordTextField.text,
+                                      keychain["userCheck"] != nil, keychain["user"] == nil  {
             if passwordStep2 == keychain["userCheck"] {
                 keychain["user"] = passwordStep2
                 keychain["userCheck"] = nil
                 passwordTextField.text = ""
                 print("пароль сохранен")
+                
             } else {
                 print("пароли не совпадют")
                 passwordTextField.text = ""
                 keychain["userCheck"] = nil
                 homeButton.setTitle("Создать пароль", for: .normal)
             }
+            
         } else if passwordTextField.text == keychain["user"] && keychain["userCheck"] == nil {
                 print("Вы зашли")
+                pushVC()
+            
+        } else if passwordTextField.placeholder == "Enter the new password" {
+            keychain["user"] = passwordTextField.text
+            print("Пароль изменен")
+            dismiss(animated: true, completion: nil)
+            
         } else {
             if passwordTextField.text != keychain["user"]  {
                 print("неверный пароль")
@@ -93,6 +107,13 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func pushVC() {
+        let newVC = appCoordinator.mainViewController
+        
+        navigationController?.pushViewController(newVC, animated: true)
+        navigationController?.isNavigationBarHidden = true
+    }
+
     
     private func setupUI() {
         view.addSubview(passwordTextField)

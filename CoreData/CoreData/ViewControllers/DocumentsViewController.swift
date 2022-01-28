@@ -75,11 +75,15 @@ extension DocumentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: cellID)
         
-
-        cell.textLabel?.text = String(describing: self.parthToItems[indexPath.row].lastPathComponent)
-        cell.imageView?.image = UIImage(systemName: "photo")
+        if UserSetting.sortFilterDocNames == true {
+            let sortedParthToItem = self.parthToItems.sorted(by: {$0.lastPathComponent < $1.lastPathComponent })
+            cell.textLabel?.text = String(describing: sortedParthToItem[indexPath.row].lastPathComponent)
+            cell.imageView?.image = UIImage(systemName: "photo")
+        } else {
+            cell.textLabel?.text = String(describing: self.parthToItems[indexPath.row].lastPathComponent)
+            cell.imageView?.image = UIImage(systemName: "photo")
+        }
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -123,4 +127,14 @@ extension DocumentsViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+
+extension DocumentsViewController: ReloadDataDelegate {
+
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
 }

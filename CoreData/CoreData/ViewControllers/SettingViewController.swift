@@ -7,12 +7,13 @@
 
 import UIKit
 
-
-enum SortedNames {
-    case sorted, unsorted
+protocol ReloadDataDelegate: AnyObject {
+    func reloadData()
 }
 
 class SettingViewController: UIViewController {
+    
+    weak var dataReload: ReloadDataDelegate?
     
     var sortLabel: UILabel = {
         let sortLabel = UILabel()
@@ -38,23 +39,33 @@ class SettingViewController: UIViewController {
         passChangeButton.layer.masksToBounds = true
         passChangeButton.layer.borderWidth = 0.5
         passChangeButton.layer.cornerRadius = 10
+        passChangeButton.addTarget(self, action: #selector(changePassword), for: .touchUpInside)
         return passChangeButton
     }()
+    
+    @objc func changePassword() {
+        let changePassVC = HomeViewController()
+        present(changePassVC, animated: true, completion: nil)
+        changePassVC.homeButton.setTitle("Изменить пароль", for: .normal)
+        changePassVC.passwordTextField.placeholder = "Enter the new password"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
         view.backgroundColor = .white
-        
+        sortSwitch.isOn = UserSetting.sortFilterDocNames 
         setupUI()
     }
     
     
     @objc func sortedDocNames() {
         if sortSwitch.isOn {
-            view.backgroundColor = .green
+            UserSetting.sortFilterDocNames = true
+            dataReload?.reloadData()
         } else {
-            view.backgroundColor = .blue
+            UserSetting.sortFilterDocNames = false
+            dataReload?.reloadData()
         }
     }
     
