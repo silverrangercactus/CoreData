@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DocumentsViewController: UIViewController {
     
     var tableView = UITableView(frame: .zero, style: .plain)
     var cellID = "cellID"
@@ -15,17 +15,19 @@ class ViewController: UIViewController {
     let fileManager = FileManager.default
     
     var parthToItems : [URL] = []
+
         
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Documents"
-        view.backgroundColor = .systemGray6
-        self.navigationController?.navigationBar.backgroundColor = .systemGray6
+        view.backgroundColor = .white
+        self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto))
-
+                
         setupTableView()
         print("Путь - \(FileManager.getDocumentDirectory())")
         addToFolder()
+        
     }
 
     @objc func addPhoto() {
@@ -64,7 +66,7 @@ class ViewController: UIViewController {
 }
     
 
-extension ViewController: UITableViewDataSource {
+extension DocumentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.parthToItems.count
     }
@@ -72,11 +74,16 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: cellID)
-  
-        cell.textLabel?.text = String(describing: self.parthToItems[indexPath.row].lastPathComponent)
-        cell.imageView?.image = UIImage(systemName: "photo")
-        return cell
         
+        if UserSetting.sortFilterDocNames == true {
+            let sortedParthToItem = self.parthToItems.sorted(by: {$0.lastPathComponent < $1.lastPathComponent })
+            cell.textLabel?.text = String(describing: sortedParthToItem[indexPath.row].lastPathComponent)
+            cell.imageView?.image = UIImage(systemName: "photo")
+        } else {
+            cell.textLabel?.text = String(describing: self.parthToItems[indexPath.row].lastPathComponent)
+            cell.imageView?.image = UIImage(systemName: "photo")
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -98,7 +105,7 @@ extension ViewController: UITableViewDataSource {
 
 
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension DocumentsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -120,4 +127,14 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+
+extension DocumentsViewController: ReloadDataDelegate {
+
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
 }
